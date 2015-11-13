@@ -1,0 +1,11 @@
+@(message: String)
+
+<html><body>@message
+
+<form action="@routes.Application.sayHello()" method="POST">
+    <input type="text" name="name" value="London"/> 
+    <input type="submit" value="Say hello!" />
+</form> 
+
+</body></html>
+
