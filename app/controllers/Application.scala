@@ -123,15 +123,15 @@ class Application(WStrait: WStrait) extends Controller {
 
   def sayHello() = Action.async { implicit request =>
 
-    val form = personForm.bindFromRequest.get
-    println("inside method" + form.Name)
+  //  val form = personForm.bindFromRequest.get
+  //  println("inside method" + form.Name)
 
-    val futureresponse = WS.url("http://api.openweathermap.org/data/2.5/weather?q=" + form.Name).withHeaders(ContentXML).get
+    val futureresponse = WS.url("http://omestateconsultancy.com/apistaging/citytown.php").withHeaders(ContentXML).get
 
     futureresponse.map {
       response =>
-        Logger.info("i came in " + (response.json \ "main" \ "temp").toString)
-        Ok(views.html.index("tempreture in " + form.Name + " is==>" + (response.json \ "main" \ "temp").toString + "K"))
+       // Logger.info("i came in " + (response.json \ "main" \ "temp").toString)
+        Ok(response.json)
     }
   }
 }
